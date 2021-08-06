@@ -16,6 +16,7 @@ area = ""
 valor_lata = 0
 valor_galao = 0
 area_pintada = 0
+indicacao = 0
 
 imagem = tkinter.PhotoImage(file="imagem.png")
 imagem_menor = imagem.subsample(3,3)
@@ -25,17 +26,21 @@ w.grid(column = 0, row = 0)
 
 
 areatexto = tkinter.Label(tela, text="  Digite a área a ser pintada em m2: ")
-valor_latatexto = tkinter.Label(tela, text=" Digite o valor da lata: ")
+valor_latatexto = tkinter.Label(tela, text="Digite o valor da lata: ")
 valor_galaotexto = tkinter.Label(tela, text="  Digite o valor do galão: ")
-areatexto.grid(column=0, row=1)
-valor_latatexto.grid(column=0, row=2)
-valor_galaotexto.grid(column=0, row=3)
-area = tkinter.Entry(tela, width=20, textvariable=area_pintada)
-valor_lata = tkinter.Entry(tela, width=50, textvariable=valor_lata)
-valor_galao = tkinter.Entry(tela, width=20, textvariable=valor_galao)
-area.grid(column=1, row=3, padx=0)
-valor_lata.grid(column=1, row=4, padx=0)
-valor_galao.grid(column=1, row=5, padx=0)
+indicacao_compra = tkinter.Label(tela, text=indicacao)
+indicacao_compra.grid(column = 0, row = 4)
+
+
+areatexto.grid(column=1, row=0)
+valor_latatexto.grid(column=1, row=1)
+valor_galaotexto.grid(column=1, row=2)
+area = tkinter.Entry(tela, width=30, textvariable=area_pintada)
+valor_lata = tkinter.Entry(tela, width=30, textvariable=valor_lata)
+valor_galao = tkinter.Entry(tela, width=30, textvariable=valor_galao)
+area.grid(column=2, row=0, padx=0)
+valor_lata.grid(column=2, row=1, padx=0)
+valor_galao.grid(column=2, row=2, padx=0)
 
 tela.mainloop()
 
@@ -57,7 +62,7 @@ desperdicio_galao = (total_galao * 3.6) - tinta_necessaria
 
 diferenca_recipiente = math.floor(total_galao / 5)
 
-print("{} latas e {} galões".format(diferenca_recipiente,math.ceil(total_galao%5) )  )
+indicacao = ("{} latas e {} galões".format(diferenca_recipiente,math.ceil(total_galao%5) )  )
 
 if desperdicio_galao < desperdicio_lata:
     print("Melhor escolha é comprar {} galões".format(total_galao))
